@@ -1,18 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using MongoDB.Driver;
+using RandomQuotes.BusinessLogic;
+using RandomQuotes.BusinessLogic.Interfaces;
+using RandomQuotes.BusinessLogic.Services;
+using RandomQuotes.DataAccess;
+using RandomQuotes.DataAccess.Interfaces;
+using RandomQuotes.DataAccess.Repositories;
 
-namespace RandomQuotes
+namespace RandomQuotes.Api
 {
     public class Startup
     {
@@ -31,6 +31,14 @@ namespace RandomQuotes
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "RandomQuotes", Version = "v1" });
             });
+            services.AddRouting(c => c.LowercaseUrls = true);
+            
+            RegisterMongoDb(services);
+            RegisterAutoMapper(services);
+            
+            // TODO add dependency injection in assemblies
+            services.AddTransient<IQuotesRepository, QuotesRepository>();
+            services.AddTransient<IQuotesService, QuotesService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +58,24 @@ namespace RandomQuotes
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+        }
+
+        private void RegisterMongoDb(IServiceCollection services)
+        {
+            services.AddSingleton(_ =>
+                new MongoClient(Configuration.GetConnectionString("MongoDb")).GetDatabase("RandomQuotesDatabase"));
+            // Configuration["MongoDbDataBaseName"]));
+        }
+        
+        private static void RegisterAutoMapper(IServiceCollection services)
+        {
+            var mappings = new[]
+            {
+                typeof(ApiMappingProfile),
+                typeof(CoreMappingProfile),
+                typeof(DataAccessMappingProfile)
+            };
+            services.AddAutoMapper(mappings);
         }
     }
 }
