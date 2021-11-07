@@ -13,5 +13,12 @@ namespace RandomQuotes.DataAccess.Interfaces
         /// </summary>
         /// <returns></returns>
         Task<Quote> GetRandomQuote();
+        
+        /// <summary>
+        /// Create quote
+        /// </summary>
+        /// <param name="request">Request parameters</param>
+        /// <returns>Create quote response</returns>
+        Task<CreateQuoteResponse> CreateQuote(CreateQuoteRequest request);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using RandomQuotes.BusinessLogic.Models;
 
 namespace RandomQuotes.BusinessLogic
 {
@@ -6,6 +7,9 @@ namespace RandomQuotes.BusinessLogic
     {
         public CoreMappingProfile()
         {
+            CreateMap<CreateQuoteRequest, DataAccess.Models.CreateQuoteRequest>();
+            
+            CreateMap<DataAccess.Models.CreateQuoteResponse, CreateQuoteResponse>();
         }
     }
 }

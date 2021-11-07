@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using RandomQuotes.Contract;
 
 namespace RandomQuotes.Api
 {
@@ -6,6 +7,9 @@ namespace RandomQuotes.Api
     {
         public ApiMappingProfile()
         {
+            CreateMap<CreateQuoteRequest, BusinessLogic.Models.CreateQuoteRequest>();
+            
+            CreateMap<BusinessLogic.Models.CreateQuoteResponse, CreateQuoteResponse>();
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using RandomQuotes.Contract;
+using RandomQuotes.BusinessLogic.Models;
 using RandomQuotes.Resources;
 
 namespace RandomQuotes.BusinessLogic.Interfaces
@@ -14,5 +14,12 @@ namespace RandomQuotes.BusinessLogic.Interfaces
         /// </summary>
         /// <returns>Quote contract model</returns>
         Task<WriteResult<Quote>> GetRandomQuote();
+
+        /// <summary>
+        /// Create quote
+        /// </summary>
+        /// <param name="request">Request parameters</param>
+        /// <returns>Create quote response</returns>
+        Task<WriteResult<CreateQuoteResponse>> CreateQuote(CreateQuoteRequest request);
     }
 }
