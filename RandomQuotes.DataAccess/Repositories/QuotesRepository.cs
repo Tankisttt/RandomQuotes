@@ -4,6 +4,7 @@ using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using RandomQuotes.Abstractions.Models;
 using RandomQuotes.Abstractions.Repositories;
+using Quote = RandomQuotes.DataAccess.Models.Quote;
 
 namespace RandomQuotes.DataAccess.Repositories
 {
@@ -21,9 +22,12 @@ namespace RandomQuotes.DataAccess.Repositories
         }
 
         /// <inheritdoc cref="IQuotesRepository.GetRandomQuote"/>
-        public async Task<Quote> GetRandomQuote()
-            => await GetCollection().AsQueryable().Sample(1)
+        public async Task<RandomQuotes.Abstractions.Models.Quote> GetRandomQuote()
+        {
+            var quote = await GetCollection().AsQueryable().Sample(1)
                 .FirstOrDefaultAsync();
+            return _mapper.Map<RandomQuotes.Abstractions.Models.Quote>(quote);
+        }
 
         public async Task<CreateQuoteResponse> CreateQuote(CreateQuoteRequest request)
         {
@@ -32,6 +36,7 @@ namespace RandomQuotes.DataAccess.Repositories
             return _mapper.Map<CreateQuoteResponse>(quote);
         }
 
-        private IMongoCollection<Quote> GetCollection() => _database.GetCollection<Quote>(CollectionName);
+        private IMongoCollection<Quote> GetCollection() =>
+            _database.GetCollection<Quote>(CollectionName);
     }
 }

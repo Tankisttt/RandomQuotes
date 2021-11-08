@@ -10,6 +10,8 @@ namespace RandomQuotes.Api
             CreateMap<CreateQuoteRequest, Abstractions.Models.CreateQuoteRequest>();
             
             CreateMap<Abstractions.Models.CreateQuoteResponse, CreateQuoteResponse>();
+            
+            CreateMap<Abstractions.Models.Quote, Quote>();
         }
     }
 }

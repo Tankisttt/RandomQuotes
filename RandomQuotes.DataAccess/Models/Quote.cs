@@ -8,6 +8,7 @@ namespace RandomQuotes.DataAccess.Models
     /// <summary>
     /// Quote data access model using in database
     /// </summary>
+    [BsonIgnoreExtraElements]
     public class Quote
     {
         [BsonId]

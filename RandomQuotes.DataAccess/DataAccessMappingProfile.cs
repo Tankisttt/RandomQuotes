@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using RandomQuotes.DataAccess.Models;
 
 namespace RandomQuotes.DataAccess
 {
@@ -6,6 +7,7 @@ namespace RandomQuotes.DataAccess
     {
         public DataAccessMappingProfile()
         {
+            CreateMap<Quote, Abstractions.Models.Quote>();
         }
     }
 }
