@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\RandomQuotes.Abstractions\RandomQuotes.Abstractions.csproj" />
       <ProjectReference Include="..\RandomQuotes.Contract\RandomQuotes.Contract.csproj" />
       <ProjectReference Include="..\RandomQuotes.DataAccess\RandomQuotes.DataAccess.csproj" />
       <ProjectReference Include="..\RandomQuotes.Resources\RandomQuotes.Resources.csproj" />

@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using RandomQuotes.Core.Models;
+using RandomQuotes.Abstractions.Models;
 using RandomQuotes.Resources;
 
-namespace RandomQuotes.Core.Interfaces
+namespace RandomQuotes.Abstractions.Services
 {
     /// <summary>
     /// Quotes service for manipulations with quotes

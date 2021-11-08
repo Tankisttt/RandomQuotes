@@ -1,4 +1,4 @@
-﻿namespace RandomQuotes.Core.Models
+﻿namespace RandomQuotes.Abstractions.Models
 {
     public class CreateQuoteRequest
     {

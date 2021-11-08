@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8201A891
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomQuotes.CoreTests", "RandomQuotes.CoreTests\RandomQuotes.CoreTests.csproj", "{0E27CB08-3307-41D5-9078-A0CD51EB8CBC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomQuotes.Abstractions", "RandomQuotes.Abstractions\RandomQuotes.Abstractions.csproj", "{95FF8451-E07A-47B2-BD55-9A6C76E60C45}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{0E27CB08-3307-41D5-9078-A0CD51EB8CBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E27CB08-3307-41D5-9078-A0CD51EB8CBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E27CB08-3307-41D5-9078-A0CD51EB8CBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95FF8451-E07A-47B2-BD55-9A6C76E60C45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95FF8451-E07A-47B2-BD55-9A6C76E60C45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95FF8451-E07A-47B2-BD55-9A6C76E60C45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95FF8451-E07A-47B2-BD55-9A6C76E60C45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0E27CB08-3307-41D5-9078-A0CD51EB8CBC} = {8201A891-A812-4C8C-A2F8-880747477B50}

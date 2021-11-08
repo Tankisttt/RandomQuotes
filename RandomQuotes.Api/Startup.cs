@@ -5,11 +5,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using MongoDB.Driver;
+using RandomQuotes.Abstractions.Repositories;
+using RandomQuotes.Abstractions.Services;
 using RandomQuotes.Core;
-using RandomQuotes.Core.Interfaces;
 using RandomQuotes.Core.Services;
 using RandomQuotes.DataAccess;
-using RandomQuotes.DataAccess.Interfaces;
 using RandomQuotes.DataAccess.Repositories;
 
 namespace RandomQuotes.Api

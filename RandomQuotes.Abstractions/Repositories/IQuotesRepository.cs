@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using RandomQuotes.DataAccess.Models;
+using RandomQuotes.Abstractions.Models;
 
-namespace RandomQuotes.DataAccess.Interfaces
+namespace RandomQuotes.Abstractions.Repositories
 {
     /// <summary>
     /// Get quotes from quotes collection

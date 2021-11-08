@@ -7,9 +7,9 @@ namespace RandomQuotes.Api
     {
         public ApiMappingProfile()
         {
-            CreateMap<CreateQuoteRequest, Core.Models.CreateQuoteRequest>();
+            CreateMap<CreateQuoteRequest, Abstractions.Models.CreateQuoteRequest>();
             
-            CreateMap<Core.Models.CreateQuoteResponse, CreateQuoteResponse>();
+            CreateMap<Abstractions.Models.CreateQuoteResponse, CreateQuoteResponse>();
         }
     }
 }

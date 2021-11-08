@@ -2,8 +2,8 @@
 using AutoMapper;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
-using RandomQuotes.DataAccess.Interfaces;
-using RandomQuotes.DataAccess.Models;
+using RandomQuotes.Abstractions.Models;
+using RandomQuotes.Abstractions.Repositories;
 
 namespace RandomQuotes.DataAccess.Repositories
 {
