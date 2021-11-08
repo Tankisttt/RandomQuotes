@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomQuotes.Resources", "R
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8201A891-A812-4C8C-A2F8-880747477B50}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomQuotes.CoreTests", "RandomQuotes.CoreTests\RandomQuotes.CoreTests.csproj", "{0E27CB08-3307-41D5-9078-A0CD51EB8CBC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,5 +40,12 @@ Global
 		{EA84B747-4B50-4EEE-8AF0-F1818A5A3ED8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA84B747-4B50-4EEE-8AF0-F1818A5A3ED8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA84B747-4B50-4EEE-8AF0-F1818A5A3ED8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E27CB08-3307-41D5-9078-A0CD51EB8CBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E27CB08-3307-41D5-9078-A0CD51EB8CBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E27CB08-3307-41D5-9078-A0CD51EB8CBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E27CB08-3307-41D5-9078-A0CD51EB8CBC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0E27CB08-3307-41D5-9078-A0CD51EB8CBC} = {8201A891-A812-4C8C-A2F8-880747477B50}
 	EndGlobalSection
 EndGlobal

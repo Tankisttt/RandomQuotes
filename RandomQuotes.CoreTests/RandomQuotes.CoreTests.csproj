@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoFixture" Version="4.17.0" />
+      <PackageReference Include="AutoMapper" Version="10.1.1" />
+      <PackageReference Include="Moq" Version="4.16.1" />
+      <PackageReference Include="xunit" Version="2.4.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\RandomQuotes.Core\RandomQuotes.Core.csproj" />
+      <ProjectReference Include="..\RandomQuotes.DataAccess\RandomQuotes.DataAccess.csproj" />
+    </ItemGroup>
+
+</Project>
