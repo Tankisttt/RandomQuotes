@@ -2,7 +2,7 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using RandomQuotes.BusinessLogic.Interfaces;
+using RandomQuotes.Core.Interfaces;
 using RandomQuotes.Contract;
 
 namespace RandomQuotes.Api.Controllers
@@ -28,7 +28,7 @@ namespace RandomQuotes.Api.Controllers
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public async Task<IActionResult> AddQuote(CreateQuoteRequest request)
         {
-            var createQuoteRequest = Mapper.Map<BusinessLogic.Models.CreateQuoteRequest>(request);
+            var createQuoteRequest = Mapper.Map<Core.Models.CreateQuoteRequest>(request);
             return RenderResult<CreateQuoteResponse>(await _quotesService.CreateQuote(createQuoteRequest));
         }
     }

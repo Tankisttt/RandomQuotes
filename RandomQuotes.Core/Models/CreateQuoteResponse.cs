@@ -1,4 +1,4 @@
-﻿namespace RandomQuotes.BusinessLogic.Models
+﻿namespace RandomQuotes.Core.Models
 {
     public class CreateQuoteResponse
     {

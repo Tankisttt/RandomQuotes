@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using RandomQuotes.BusinessLogic.Models;
+using RandomQuotes.Core.Models;
 
-namespace RandomQuotes.BusinessLogic
+namespace RandomQuotes.Core
 {
     public class CoreMappingProfile : Profile
     {

@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomQuotes.Api", "RandomQuotes.Api\RandomQuotes.Api.csproj", "{ED859888-A167-45F9-831D-A26E22B6380B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomQuotes.BusinessLogic", "RandomQuotes.BusinessLogic\RandomQuotes.BusinessLogic.csproj", "{23D5ADCF-057A-4C51-977E-81934F551BB1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomQuotes.Core", "RandomQuotes.Core\RandomQuotes.Core.csproj", "{23D5ADCF-057A-4C51-977E-81934F551BB1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomQuotes.Contract", "RandomQuotes.Contract\RandomQuotes.Contract.csproj", "{E3119EBD-1935-4CCC-9B49-E6277D22DB2D}"
 EndProject

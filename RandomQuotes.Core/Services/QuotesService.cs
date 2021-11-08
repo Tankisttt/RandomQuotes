@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
 using AutoMapper;
-using RandomQuotes.BusinessLogic.Interfaces;
-using RandomQuotes.BusinessLogic.Models;
+using RandomQuotes.Core.Interfaces;
+using RandomQuotes.Core.Models;
 using RandomQuotes.DataAccess.Interfaces;
 using RandomQuotes.Resources;
 
-namespace RandomQuotes.BusinessLogic.Services
+namespace RandomQuotes.Core.Services
 {
     /// <inheritdoc cref="IQuotesService"/>>
     public class QuotesService : IQuotesService

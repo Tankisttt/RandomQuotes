@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using RandomQuotes.BusinessLogic.Models;
+using RandomQuotes.Core.Models;
 using RandomQuotes.Resources;
 
-namespace RandomQuotes.BusinessLogic.Interfaces
+namespace RandomQuotes.Core.Interfaces
 {
     /// <summary>
     /// Quotes service for manipulations with quotes

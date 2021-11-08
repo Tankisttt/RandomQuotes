@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
-        <AssemblyName>RandomQuotes.BusinessLogic</AssemblyName>
-        <RootNamespace>RandomQuotes.BusinessLogic</RootNamespace>
+        <AssemblyName>RandomQuotes.Core</AssemblyName>
+        <RootNamespace>RandomQuotes.Core</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

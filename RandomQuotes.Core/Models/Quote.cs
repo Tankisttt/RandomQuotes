@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RandomQuotes.BusinessLogic.Models
+namespace RandomQuotes.Core.Models
 {
     /// <summary>
     /// Quote data access model using in database
