@@ -27,7 +27,7 @@ namespace RandomQuotes.Api.Controllers
         [HttpPost("Add")]
         [ProducesResponseType(typeof(CreateQuoteResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public async Task<IActionResult> AddQuote(CreateQuoteRequest request)
+        public async Task<IActionResult> AddQuote([FromBody] CreateQuoteRequest request)
         {
             var createQuoteRequest = Mapper.Map<Abstractions.Models.CreateQuoteRequest>(request);
             return RenderResult<CreateQuoteResponse>(await _quotesService.CreateQuote(createQuoteRequest));

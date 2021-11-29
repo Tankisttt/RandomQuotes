@@ -30,6 +30,7 @@ namespace RandomQuotes.DataAccess.Repositories
             return _mapper.Map<RandomQuotes.Abstractions.Models.Quote>(quote);
         }
 
+        /// <inheritdoc cref="IQuotesRepository.CreateQuote"/>
         public async Task<CreateQuoteResponse> CreateQuote(CreateQuoteRequest request)
         {
             var quote = _mapper.Map<Quote>(request);

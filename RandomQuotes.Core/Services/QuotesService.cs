@@ -18,7 +18,7 @@ namespace RandomQuotes.Core.Services
             _quotesRepository = quotesRepository;
         }
 
-        /// <inheritdoc cref="IQuotesService.GetRandomQuote"/>>
+        /// <inheritdoc cref="IQuotesService.GetRandomQuote"/>
         public async Task<WriteResult<Quote>> GetRandomQuote()
         {
             var randomQuote = await _quotesRepository.GetRandomQuote();
@@ -29,6 +29,7 @@ namespace RandomQuotes.Core.Services
             return WriteResult<Quote>.FromValue(randomQuote);
         }
 
+        /// <inheritdoc cref="IQuotesService.CreateQuote"/>
         public async Task<WriteResult<CreateQuoteResponse>> CreateQuote(CreateQuoteRequest request)
         {
             var response = await _quotesRepository.CreateQuote(request);
