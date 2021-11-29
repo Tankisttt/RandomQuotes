@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using AutoMapper;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
@@ -34,6 +35,13 @@ namespace RandomQuotes.DataAccess.Repositories
             var quote = _mapper.Map<Quote>(request);
             await GetCollection().InsertOneAsync(quote);
             return _mapper.Map<CreateQuoteResponse>(quote);
+        }
+
+        /// <inheritdoc cref="IQuotesRepository.BatchUpload"/>
+        public async Task BatchUpload(IEnumerable<CreateQuoteRequest> quotesRequest)
+        {
+            var quotes = _mapper.Map<IEnumerable<Quote>>(quotesRequest);
+            await GetCollection().InsertManyAsync(quotes);
         }
 
         private IMongoCollection<Quote> GetCollection() =>

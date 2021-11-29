@@ -12,6 +12,8 @@ namespace RandomQuotes.Api
             CreateMap<Abstractions.Models.CreateQuoteResponse, CreateQuoteResponse>();
             
             CreateMap<Abstractions.Models.Quote, Quote>();
+
+            CreateMap<Abstractions.Models.BatchUploadResponse, BatchUploadResponse>();
         }
     }
 }

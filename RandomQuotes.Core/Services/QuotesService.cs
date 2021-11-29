@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
 using RandomQuotes.Abstractions.Repositories;
 using RandomQuotes.Abstractions.Services;
 using RandomQuotes.Abstractions.Models;
@@ -31,6 +33,30 @@ namespace RandomQuotes.Core.Services
         {
             var response = await _quotesRepository.CreateQuote(request);
             return WriteResult<CreateQuoteResponse>.FromValue(response);
+        }
+
+        /// <inheritdoc cref="IQuotesService.BatchUpload"/>
+        public async Task<WriteResult<BatchUploadResponse>> BatchUpload(StreamReader streamReader,
+            string author = "Unknown author")
+        {
+            var quotes = new List<CreateQuoteRequest>();
+            try
+            {
+                while (streamReader.Peek() >= 0)
+                    quotes.Add(new()
+                    {
+                        Author = author,
+                        Text = await streamReader.ReadLineAsync()
+                    });
+            }
+            catch
+            {
+                if (quotes.Count == 0)
+                    return WriteResult<BatchUploadResponse>.FromError(DefaultErrorModels.FileIsNotSupported);
+            }
+
+            await _quotesRepository.BatchUpload(quotes);
+            return WriteResult<BatchUploadResponse>.FromValue(new() { Count = quotes.Count });
         }
     }
 }

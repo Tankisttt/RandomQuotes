@@ -7,5 +7,8 @@
 
         public static ErrorModel QuotesNotFound
             => ErrorModel.NotFound(ErrorModelKeys.QuoteNotFound, "Quote not found");
+        
+        public static ErrorModel FileIsNotSupported
+            => ErrorModel.Default(ErrorModelKeys.FileNotSupported, "File not supported for batch download");
     }
 }

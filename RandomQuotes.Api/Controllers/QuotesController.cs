@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.IO;
+using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -30,6 +31,21 @@ namespace RandomQuotes.Api.Controllers
         {
             var createQuoteRequest = Mapper.Map<Abstractions.Models.CreateQuoteRequest>(request);
             return RenderResult<CreateQuoteResponse>(await _quotesService.CreateQuote(createQuoteRequest));
+        }
+
+        [HttpPost]
+        [ProducesResponseType(typeof(BatchUploadResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        public async Task<IActionResult> BatchDownload(IFormFile file, [FromQuery] string author)
+        {
+            if (file == null || file.Length == 0)
+                return BadRequest();
+
+            using var reader = new StreamReader(file.OpenReadStream());
+            var downloadResult = await _quotesService.BatchUpload(reader, author);
+            
+            return RenderResult<BatchUploadResponse>(downloadResult);
         }
     }
 }
