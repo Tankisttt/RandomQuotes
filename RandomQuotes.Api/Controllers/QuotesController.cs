@@ -33,11 +33,11 @@ namespace RandomQuotes.Api.Controllers
             return RenderResult<CreateQuoteResponse>(await _quotesService.CreateQuote(createQuoteRequest));
         }
 
-        [HttpPost]
+        [HttpPost("BatchUpload")]
         [ProducesResponseType(typeof(BatchUploadResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public async Task<IActionResult> BatchDownload(IFormFile file, [FromQuery] string author)
+        public async Task<IActionResult> BatchUpload(IFormFile file, [FromQuery] string author)
         {
             if (file == null || file.Length == 0)
                 return BadRequest();

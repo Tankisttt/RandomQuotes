@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Refit" Version="6.1.15" />
+      <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\RandomQuotes.Contract\RandomQuotes.Contract.csproj" />
+    </ItemGroup>
+
+</Project>
