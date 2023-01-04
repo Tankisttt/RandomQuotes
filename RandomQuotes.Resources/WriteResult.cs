@@ -80,16 +80,14 @@ public class ErrorModel
     /// </summary>
     /// <param name="key">Error key</param>
     /// <param name="message">Error message</param>
-    public static ErrorModel Forbidden(string key, string message) =>
-        new ErrorModel(key, message, ErrorKind.Forbidden);
+    public static ErrorModel Forbidden(string key, string message) => new(key, message, ErrorKind.Forbidden);
 
     /// <summary>
     /// Generates model that indicates that resource was not found 
     /// </summary>
     /// <param name="key">Error key</param>
     /// <param name="message">Error message</param>
-    public static ErrorModel NotFound(string key, string message) =>
-        new ErrorModel(key, message, ErrorKind.NotFound);
+    public static ErrorModel NotFound(string key, string message) => new(key, message, ErrorKind.NotFound);
 
     /// <summary>
     /// Makes copy of the error model with new values. All parameters are options.

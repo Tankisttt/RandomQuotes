@@ -1,6 +1,8 @@
 ﻿using System;
 using AutoMapper;
 using RandomQuotes.Abstractions.Models;
+using RandomQuotes.Abstractions.Models.User;
+using RandomQuotes.DataAccess.Models.User;
 
 namespace RandomQuotes.DataAccess;
 
@@ -8,18 +10,26 @@ public class DataAccessMappingProfile : Profile
 {
     public DataAccessMappingProfile()
     {
-        CreateMap<Quote, DataAccess.Models.MongoQuote>();
+        CreateMap<Quote, Models.MongoQuote>();
             
-        CreateMap<CreateQuoteRequest, DataAccess.Models.MongoQuote>()
+        CreateMap<CreateQuoteRequest, Models.MongoQuote>()
             .ForMember(x => x.Id, o => o.Ignore())
             .ForMember(x => x.CreatedAtUtc, o => o.Ignore())
-            .AfterMap((s, d) => d.CreatedAtUtc = DateTime.UtcNow);
+            .AfterMap((_, d) => d.CreatedAtUtc = DateTime.UtcNow);
 
-        CreateMap<DataAccess.Models.MongoQuote, CreateQuoteResponse>();
+        CreateMap<Models.MongoQuote, CreateQuoteResponse>();
 
-        CreateMap<DataAccess.Models.MongoQuote, Quote>();
+        CreateMap<Models.MongoQuote, Quote>();
             
-        CreateMap<Quote, DataAccess.Models.MongoQuote>()
+        CreateMap<Quote, Models.MongoQuote>()
             .ForMember(x => x.Id, o => o.Ignore());
+
+        #region Users
+
+        CreateMap<UserRole, UserRoleModel>();
+        CreateMap<MongoUser, UserInfoModel>();
+        CreateMap<MongoUser, UserShortInfoModel>();
+
+        #endregion
     }
 }
