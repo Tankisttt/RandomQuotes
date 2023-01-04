@@ -1,10 +1,9 @@
-﻿namespace RandomQuotes.Contract
+﻿namespace RandomQuotes.Contract;
+
+public class CreateQuoteResponse
 {
-    public class CreateQuoteResponse
-    {
-        /// <summary>
-        /// Unique quote identifier
-        /// </summary>
-        public string Id { get; set; }
-    }
+    /// <summary>
+    /// Unique quote identifier
+    /// </summary>
+    public string Id { get; set; }
 }

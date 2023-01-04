@@ -12,70 +12,69 @@ using RandomQuotes.Core.Services;
 using RandomQuotes.DataAccess;
 using RandomQuotes.DataAccess.Repositories;
 
-namespace RandomQuotes.Api
+namespace RandomQuotes.Api;
+
+public class Startup
 {
-    public class Startup
+    public Startup(IConfiguration configuration)
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        Configuration = configuration;
+    }
 
-        public IConfiguration Configuration { get; }
+    public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+    // This method gets called by the runtime. Use this method to add services to the container.
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddControllers();
+        services.AddSwaggerGen(c =>
         {
-            services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "RandomQuotes", Version = "v1" });
-            });
-            services.AddRouting(c => c.LowercaseUrls = true);
+            c.SwaggerDoc("v1", new OpenApiInfo { Title = "RandomQuotes", Version = "v1" });
+        });
+        services.AddRouting(c => c.LowercaseUrls = true);
             
-            RegisterMongoDb(services);
-            RegisterAutoMapper(services);
+        RegisterMongoDb(services);
+        RegisterAutoMapper(services);
             
-            // TODO add dependency injection in assemblies
-            services.AddTransient<IQuotesRepository, QuotesRepository>();
-            services.AddTransient<IQuotesService, QuotesService>();
-        }
+        // TODO add dependency injection in assemblies
+        services.AddTransient<IQuotesRepository, QuotesRepository>();
+        services.AddTransient<IQuotesService, QuotesService>();
+    }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        if (env.IsDevelopment())
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "RandomQuotes v1"));
-            }
-
-            app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+            app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "RandomQuotes v1"));
         }
 
-        private void RegisterMongoDb(IServiceCollection services)
-        {
-            services.AddSingleton(_ =>
-                new MongoClient(Configuration.GetConnectionString("MongoDb")).GetDatabase("RandomQuotesDatabase"));
-            // Configuration["MongoDbDataBaseName"]));
-        }
+        app.UseHttpsRedirection();
+
+        app.UseRouting();
+
+        app.UseAuthorization();
+
+        app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+    }
+
+    private void RegisterMongoDb(IServiceCollection services)
+    {
+        services.AddSingleton(_ =>
+            new MongoClient(Configuration.GetConnectionString("MongoDb")).GetDatabase("RandomQuotesDatabase"));
+        // Configuration["MongoDbDataBaseName"]));
+    }
         
-        private static void RegisterAutoMapper(IServiceCollection services)
+    private static void RegisterAutoMapper(IServiceCollection services)
+    {
+        var mappings = new[]
         {
-            var mappings = new[]
-            {
-                typeof(ApiMappingProfile),
-                typeof(CoreMappingProfile),
-                typeof(DataAccessMappingProfile)
-            };
-            services.AddAutoMapper(mappings);
-        }
+            typeof(ApiMappingProfile),
+            typeof(CoreMappingProfile),
+            typeof(DataAccessMappingProfile)
+        };
+        services.AddAutoMapper(mappings);
     }
 }

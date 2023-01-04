@@ -1,7 +1,6 @@
-﻿namespace RandomQuotes.Contract
+﻿namespace RandomQuotes.Contract;
+
+public class BatchUploadResponse
 {
-    public class BatchUploadResponse
-    {
-        public int Count { get; set; }
-    }
+    public int Count { get; set; }
 }

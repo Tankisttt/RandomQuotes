@@ -2,7 +2,7 @@
 <package >
     <metadata>
         <id>RandomQuotes.Sdk</id>
-        <version>1.0.0</version>
+        <version>1.1.0</version>
         <authors>Roman Bachurin</authors>
         <owners>Roman Bachurin</owners>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -10,13 +10,13 @@
         <releaseNotes>Initial dev release</releaseNotes>
         <copyright>Copyright 2021</copyright>
         <dependencies>
-            <group targetFramework="net5.0">
-                <dependency id="Refit" version="6.1.15" />
+            <group targetFramework="net7.0">
+                <dependency id="Refit" version="6.3.2" />
             </group>
         </dependencies>
     </metadata>
     <files>
-        <file src="bin\Release\net5.0\RandomQuotes.*.dll" target="lib\net5.0" />
-        <file src="bin\Release\net5.0\RandomQuotes.*.xml" target="lib\net5.0" />
+        <file src="bin\Release\net7.0\RandomQuotes.*.dll" target="lib\net7.0" />
+        <file src="bin\Release\net7.0\RandomQuotes.*.xml" target="lib\net7.0" />
     </files>
 </package>

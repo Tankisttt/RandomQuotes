@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
 
-namespace RandomQuotes.Core
+namespace RandomQuotes.Core;
+
+public class CoreMappingProfile : Profile
 {
-    public class CoreMappingProfile : Profile
+    public CoreMappingProfile()
     {
-        public CoreMappingProfile()
-        {
-        }
     }
 }
