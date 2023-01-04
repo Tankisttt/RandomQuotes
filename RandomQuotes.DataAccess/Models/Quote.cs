@@ -9,7 +9,7 @@ namespace RandomQuotes.DataAccess.Models;
 /// Quote data access model using in database
 /// </summary>
 [BsonIgnoreExtraElements]
-public class Quote
+public class MongoQuote
 {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]

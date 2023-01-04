@@ -5,14 +5,14 @@ using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using RandomQuotes.Abstractions.Models;
 using RandomQuotes.Abstractions.Repositories;
-using Quote = RandomQuotes.DataAccess.Models.Quote;
+using RandomQuotes.DataAccess.Models;
 
 namespace RandomQuotes.DataAccess.Repositories;
 
 /// <inheritdoc cref="IQuotesRepository"/>
 public class QuotesRepository : IQuotesRepository
 {
-    private const string CollectionName = "Quotes";
+    private const string CollectionName = "quotes";
     private readonly IMongoDatabase _database;
     private readonly IMapper _mapper;
 
@@ -33,7 +33,7 @@ public class QuotesRepository : IQuotesRepository
     /// <inheritdoc cref="IQuotesRepository.CreateQuote"/>
     public async Task<CreateQuoteResponse> CreateQuote(CreateQuoteRequest request)
     {
-        var quote = _mapper.Map<Quote>(request);
+        var quote = _mapper.Map<MongoQuote>(request);
         await GetCollection().InsertOneAsync(quote);
         return _mapper.Map<CreateQuoteResponse>(quote);
     }
@@ -41,10 +41,10 @@ public class QuotesRepository : IQuotesRepository
     /// <inheritdoc cref="IQuotesRepository.BatchUpload"/>
     public async Task BatchUpload(IEnumerable<CreateQuoteRequest> quotesRequest)
     {
-        var quotes = _mapper.Map<IEnumerable<Quote>>(quotesRequest);
+        var quotes = _mapper.Map<IEnumerable<MongoQuote>>(quotesRequest);
         await GetCollection().InsertManyAsync(quotes);
     }
 
-    private IMongoCollection<Quote> GetCollection() =>
-        _database.GetCollection<Quote>(CollectionName);
+    private IMongoCollection<MongoQuote> GetCollection() =>
+        _database.GetCollection<MongoQuote>(CollectionName);
 }

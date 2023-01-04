@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using MongoDB.Driver;
+using RandomQuotes.Abstractions;
 using RandomQuotes.Abstractions.Repositories;
 using RandomQuotes.Abstractions.Services;
 using RandomQuotes.Core;
@@ -33,12 +34,11 @@ public class Startup
         });
         services.AddRouting(c => c.LowercaseUrls = true);
             
-        RegisterMongoDb(services);
+        RegisterMongoDbCollections(services);
         RegisterAutoMapper(services);
             
-        // TODO add dependency injection in assemblies
-        services.AddTransient<IQuotesRepository, QuotesRepository>();
-        services.AddTransient<IQuotesService, QuotesService>();
+        services.AddScoped<IQuotesRepository, QuotesRepository>();
+        services.AddScoped<IQuotesService, QuotesService>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,11 +60,13 @@ public class Startup
         app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
     }
 
-    private void RegisterMongoDb(IServiceCollection services)
+    private void RegisterMongoDbCollections(IServiceCollection services)
     {
-        services.AddSingleton(_ =>
-            new MongoClient(Configuration.GetConnectionString("MongoDb")).GetDatabase("RandomQuotesDatabase"));
-        // Configuration["MongoDbDataBaseName"]));
+        var mongoSection = Configuration.GetSection("RandomQuotesDatabase").Get<QuotesDatabaseSettings>();
+        // It is recommended to store a MongoClient instance in a global place,
+        // either as a static variable or in an IoC container with a singleton lifetime.
+        // https://mongodb.github.io/mongo-csharp-driver/2.14/reference/driver/connecting/#re-use
+        services.AddSingleton(_ => new MongoClient(mongoSection.ConnectionString).GetDatabase(mongoSection.DatabaseName));
     }
         
     private static void RegisterAutoMapper(IServiceCollection services)

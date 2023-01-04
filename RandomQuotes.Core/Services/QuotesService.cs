@@ -55,7 +55,7 @@ public class QuotesService : IQuotesService
             if (quotes.Count == 0)
                 return WriteResult<BatchUploadResponse>.FromError(DefaultErrorModels.FileIsNotSupported);
         }
-
+        // TODO add exception if upload has been failed
         await _quotesRepository.BatchUpload(quotes);
         return WriteResult<BatchUploadResponse>.FromValue(new() { Count = quotes.Count });
     }
