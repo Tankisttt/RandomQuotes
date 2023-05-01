@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RandomQuotes.Abstractions.Services;
@@ -8,6 +9,7 @@ using RandomQuotes.Contract;
 
 namespace RandomQuotes.Api.Controllers;
 
+[Authorize]
 [Route("v{version}/[controller]")]
 public class QuotesController : VersionedControllerBase
 {

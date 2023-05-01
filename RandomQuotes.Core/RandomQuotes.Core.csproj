@@ -14,4 +14,8 @@
       <ProjectReference Include="..\RandomQuotes.Resources\RandomQuotes.Resources.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.15.1" />
+    </ItemGroup>
+
 </Project>

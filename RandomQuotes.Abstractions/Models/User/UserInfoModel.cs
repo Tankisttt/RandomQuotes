@@ -16,5 +16,9 @@ public class UserInfoModel
 
     public string Login { get; set; }
 
+    public string Password { get; set; }
+
+    public string PasswordSalt { get; set; }
+
     public bool IsDeleted { get; set; }
 }

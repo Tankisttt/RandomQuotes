@@ -32,7 +32,7 @@ public class ApiMappingProfile : Profile
         CreateMap<LoginRequest, LoginRequestModel>();
         CreateMap<UpdateUserRequest, UpdateUserRequestModel>();
 
-        CreateMap<LoginRequestModel, LoginResponse>();
+        CreateMap<AuthenticationResponseModel, LoginResponse>();
         CreateMap<UserInfoModel, UserInfo>();
         CreateMap<UserShortInfoModel, UserShortInfo>();
         CreateMap<PagingResultModel<UserShortInfoModel>, PagingResult<UserShortInfo>>();

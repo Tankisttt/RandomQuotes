@@ -26,8 +26,8 @@ public class DataAccessMappingProfile : Profile
 
         #region Users
 
-        CreateMap<UserRole, UserRoleModel>();
-        CreateMap<MongoUser, UserInfoModel>();
+        CreateMap<UserRole, UserRoleModel>().ReverseMap();
+        CreateMap<MongoUser, UserInfoModel>().ReverseMap();
         CreateMap<MongoUser, UserShortInfoModel>();
 
         #endregion

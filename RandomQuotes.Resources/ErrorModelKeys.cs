@@ -7,4 +7,8 @@ public static class ErrorModelKeys
     public const string QuoteNotFound = "quote/not-found";
         
     public const string FileNotSupported = "quote/file-not-supported";
+
+    public const string UserNotFound = "user/not-found";
+    
+    public const string UserAlreadyExists = "user/exists";
 }
